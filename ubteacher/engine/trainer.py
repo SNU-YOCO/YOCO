@@ -8,7 +8,7 @@ from collections import OrderedDict
 import detectron2.utils.comm as comm
 import numpy as np
 import torch
-from detectron2.engine import DefaultTrainer, hooks, SimpleTrainer, TrainerBase
+from detectron2.engine import DefaultTrainer, hooks, SimpleTrainer, TrainerBase, DefaultPredictor
 from detectron2.engine.train_loop import AMPTrainer
 from detectron2.evaluation import (
     COCOEvaluator,
@@ -19,10 +19,12 @@ from detectron2.evaluation import (
 from detectron2.structures import Boxes
 from detectron2.structures.instances import Instances
 from detectron2.utils.events import EventStorage
+
 from fvcore.nn.precise_bn import get_bn_modules
 from torch.cuda.amp import autocast
 from torch.nn.parallel import DistributedDataParallel
 from ubteacher.checkpoint.detection_checkpoint import DetectionTSCheckpointer
+
 
 from ubteacher.data.build import (
     build_detection_semisup_train_loader_two_crops,
@@ -1021,3 +1023,34 @@ class UBRCNNTeacherTrainer(DefaultTrainer):
             # run writers in the end, so that evaluation metrics are written
             ret.append(hooks.PeriodicWriter(self.build_writers(), period=20))
         return ret
+
+class CustomPredictor:
+    def __init__(self, cfg):
+        self.cfg = cfg.clone()
+
+        Trainer = UBTeacherTrainer
+
+        model = Trainer.build_model(cfg)
+        model_teacher = Trainer.build_model(cfg)
+        ensem_ts_model = EnsembleTSModel(model_teacher, model)
+
+        DetectionTSCheckpointer(
+            ensem_ts_model,
+            save_dir=cfg.OUTPUT_DIR
+        ).resume_or_load(cfg.MODEL.WEIGHTS, resume=True)
+
+        model = ensem_ts_model.modelTeacher
+        # model = ensem_ts_model.modelStudent
+        self.model = model
+        
+        self.model.eval()
+
+    def __call__(self, original_image):
+        with torch.no_grad():
+            original_image = original_image[:, :, ::-1]
+            height, width = original_image.shape[:2]
+            image = original_image
+            image = torch.as_tensor(image.astype("float32").transpose(2, 0, 1))
+            inputs = {"image": image, "height": height, "width": width}
+            predictions = self.model([inputs])[0]
+            return predictions
