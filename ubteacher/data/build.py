@@ -33,19 +33,22 @@ def divide_label_unlabel(
     num_all = len(dataset_dicts)
     num_label = int(SupPercent / 100.0 * num_all)
 
-    # read from pre-generated data seed
-    with PathManager.open(random_data_seed_path, "r") as COCO_sup_file:
-        coco_random_idx = json.load(COCO_sup_file)
+    # # read from pre-generated data seed
+    # with PathManager.open(random_data_seed_path, "r") as COCO_sup_file:
+    #     coco_random_idx = json.load(COCO_sup_file)
 
-    labeled_idx = np.array(coco_random_idx[str(SupPercent)][str(random_data_seed)])
-    assert labeled_idx.shape[0] == num_label, "Number of READ_DATA is mismatched."
+    # labeled_idx = np.array(coco_random_idx[str(SupPercent)][str(random_data_seed)])
+    # assert labeled_idx.shape[0] == num_label, "Number of READ_DATA is mismatched."
 
     label_dicts = []
     unlabel_dicts = []
-    labeled_idx = set(labeled_idx)
+    # labeled_idx = set(labeled_idx)
+ 
+    rand_idx = (SupPercent * num_all) // 100
 
     for i in range(len(dataset_dicts)):
-        if i in labeled_idx:
+        # if i in labeled_idx:
+        if i < rand_idx:
             label_dicts.append(dataset_dicts[i])
         else:
             unlabel_dicts.append(dataset_dicts[i])

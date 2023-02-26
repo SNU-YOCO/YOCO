@@ -20,8 +20,8 @@ def add_ubteacher_config(cfg):
     _C.SOLVER.IMG_PER_BATCH_UNLABEL = 1
     _C.SOLVER.FACTOR_LIST = (1,)
 
-    _C.DATASETS.TRAIN_LABEL = ("coco_2017_train",)
-    _C.DATASETS.TRAIN_UNLABEL = ("coco_2017_train",)
+    _C.DATASETS.TRAIN_LABEL = ("cook_train",)
+    _C.DATASETS.TRAIN_UNLABEL = ("cook_train",)
     _C.DATASETS.CROSS_DATASET = False
     _C.TEST.EVALUATOR = "COCOeval"
 
@@ -118,7 +118,9 @@ def add_ubteacher_config(cfg):
     _C.MODEL.FCOS = CN()
 
     # This is the number of foreground classes.
-    _C.MODEL.FCOS.NUM_CLASSES = 80
+    _C.MODEL.FCOS.NUM_CLASSES = 13 # FCOS
+    _C.MODEL.ROI_HEADS.NUM_CLASSES = 12 # Faster-RCNN
+
     _C.MODEL.FCOS.IN_FEATURES = ["p3", "p4", "p5", "p6", "p7"]
     _C.MODEL.FCOS.FPN_STRIDES = [8, 16, 32, 64, 128]
     _C.MODEL.FCOS.PRIOR_PROB = 0.01
