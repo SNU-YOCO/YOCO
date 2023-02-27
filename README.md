@@ -23,7 +23,7 @@ The IEEE / CVF Computer Vision and Pattern Recognition Conference (CVPR), 2022 <
 # Installation
 
 ## Prerequisites
-
+  
 - Linux or macOS with Python ≥ 3.7
 - PyTorch ≥ 1.10 and torchvision that matches the PyTorch installation.
 - Detectron2 ≥ 0.6 (other versions are not verified)
