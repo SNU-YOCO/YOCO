@@ -1,4 +1,4 @@
-# YOCO
+# YOCO : You Only Cook Once
 
 # Unbiased Teacher v2: Semi-supervised Object Detection for Anchor-free and Anchor-based Detectors
 
