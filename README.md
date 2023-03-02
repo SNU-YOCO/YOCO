@@ -4,7 +4,7 @@ YOCO is a cooking AI based on the Unbiased teacher v2 network. It helps users co
 
 <img src="https://user-images.githubusercontent.com/43427380/222368809-683b0c2e-0aca-4f7e-ac1e-eb8eef6e51d1.png" width="82%">
 
-<img src="teaser/pancake_raw.gif" width="20%"><img src="teaser/egg_cooked.gif" width="20%"><img src="teaser/overcooked.gif" width="30%" height="10%">
+<img src="teaser/pancake_raw.gif" width="20%"><img src="teaser/egg_cooked.gif" width="20%"><img src="teaser/overcooked.gif" width="30%" height="1%">
 
 ## Model: Unbiased Teacher v2 (Anchor-free)
 
