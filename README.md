@@ -23,13 +23,14 @@ You can check the original PyTorch implementation of the paper [here](https://gi
 
 ## Train
 ### Data
-We used our own dataset with 3 dishes: **bacon**, **egg**, and **pancake**. It has 9 classes including *bacon_raw, bacon_cooked, bacon_overcooked, egg_raw, egg_cooked, egg_overcooked, pancake_raw, pancake_cooked, and pancake_overcooked*.
+We used our own dataset with 3 dishes: **bacon**, **egg**, and **pancake**. It has 12 classes including *food, pan, others, bacon_raw, bacon_cooked, bacon_overcooked, egg_raw, egg_cooked, egg_overcooked, pancake_raw, pancake_cooked, and pancake_overcooked*.
 
-|bacon|egg|pancake|
-|:--:|:--:|:--:|
-|raw|raw|raw|
-|cooked|cooked|cooked|
-|overcooked|overcooked|overcooked|
+|    |    |    |
+|:---|:---|:---|
+|food|pan|others|
+|bacon_raw|bacon_cooked|bacon_overcooked|
+|egg_raw|egg_cooked|egg_overcooked|
+|pancake_raw|pancake_cooked|pancake_overcooked|
 
 ### Training FCOS
 
