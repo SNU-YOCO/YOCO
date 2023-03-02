@@ -28,33 +28,38 @@ The IEEE / CVF Computer Vision and Pattern Recognition Conference (CVPR), 2022 <
 
 ### FCOS
 
-- Train Unbiased Teacher v2 under 10% COCO-supervision
+- Train Unbiased Teacher v2 under 40% COCO-supervision (adjust SUP_PERCENT for different ratio )
 
 ```shell
-python train_net.py \
-      --num-gpus 4 \
-      --config configs/FCOS/coco-standard/fcos_R_50_ut2_sup10_run0.yaml \
-       SOLVER.IMG_PER_BATCH_LABEL 8 SOLVER.IMG_PER_BATCH_UNLABEL 8
+python train_net_yoco.py\
+      --num-gpus 1 \
+      --config configs/FCOS/coco-standard/yoco_fcos_R_50_ut2_run0.yaml \
+       SOLVER.IMG_PER_BATCH_LABEL 4 SOLVER.IMG_PER_BATCH_UNLABEL 4 SOLVER.MAX_ITER 50000 SEMISUPNET.BURN_UP_STEP 20000 TEST.EVAL_PERIOD 500 DATALOADER.SUP_PERCENT 40.0
 ```
 
 ## Resume the training
 
 ```shell
-python train_net.py \
+python train_net_yoco.py \
       --resume \
-      --num-gpus 8 \
-      --config configs/FCOS/coco-standard/fcos_R_50_ut2_sup10_run0.yaml \
-       SOLVER.IMG_PER_BATCH_LABEL 8 SOLVER.IMG_PER_BATCH_UNLABEL 8 MODEL.WEIGHTS <your weight>.pth
+      --num-gpus 1 \
+      --config configs/FCOS/coco-standard/yoco_fcos_R_50_ut2_run0.yaml \
+       SOLVER.IMG_PER_BATCH_LABEL 4 SOLVER.IMG_PER_BATCH_UNLABEL 4 SOLVER.MAX_ITER 50000 SEMISUPNET.BURN_UP_STEP 20000 TEST.EVAL_PERIOD 500 DATALOADER.SUP_PERCENT 40.0 MODEL.WEIGHTS <your weight>.pth
 ```
 
-## Evaluation
+## Inference
+
+- Adjust INFERENCE_TH_TEST for different threshold
 
 ```shell
 python train_net.py \
-      --eval-only \
-      --num-gpus 8 \
-      --config configs/FCOS/coco-standard/fcos_R_50_ut2_sup10_run0.yaml \
-       SOLVER.IMG_PER_BATCH_LABEL 8 SOLVER.IMG_PER_BATCH_UNLABEL 8 MODEL.WEIGHTS <your weight>.pth
+      --test-only \
+      --num-gpus 1 \
+      --config configs/FCOS/coco-standard/yoco_fcos_R_50_ut2_run0.yaml \
+      --output_dir <your directory> \
+      --video_input <your directory> \
+      MODEL.WEIGHTS <your weight>.pth \
+      MODEL.FCOS.INFERENCE_TH_TEST 0.4
 ```
 
 ## License
