@@ -4,8 +4,36 @@ YOCO is a cooking AI based on the Unbiased teacher v2 network. It helps users co
 
 <img src="https://user-images.githubusercontent.com/43427380/222368809-683b0c2e-0aca-4f7e-ac1e-eb8eef6e51d1.png" width="82%">
 
-<img src="teaser/pancake_raw.gif" width="19%"><img src="teaser/egg_cooked.gif" width="20%"><img src="teaser/bacon_overcooked.gif" width="27%">
-<img src="teaser/bacon_raw.gif" width="34%"><img src="teaser/bacon_cooked.gif" width="34%"><img src="teaser/full.gif" width="30%">
+<table>
+      <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+      </tr>
+    <tr style="padding: 0;">
+	<td colspan="3" align = "center" ><img src="teaser/pancake_raw.gif" width="180px"></td>
+	<td colspan="3" align = "center" ><img src="teaser/egg_cooked.gif" width="180px"></td>
+	<td colspan="4" align = "center" ><img src="teaser/bacon_overcooked.gif" width="240px"></td>
+	<td colspan="4" rowspan="2" align = "center" bgcolor="skyblue"><img src="teaser/full.gif" width="330px"></td>
+    </tr>
+    <tr style="padding: 0;">
+	<td colspan="5" align = "center" ><img src="teaser/bacon_raw.gif" width="320px"></td>
+	<td colspan="5" align = "center" ><img src="teaser/bacon_cooked.gif" width="320px"></td>
+    </tr>
+</table>
+
+<!-- <img src="teaser/pancake_raw.gif" width="19%"><img src="teaser/egg_cooked.gif" width="20%"><img src="teaser/bacon_overcooked.gif" width="27%">
+ <img src="teaser/bacon_raw.gif" width="35%"><img src="teaser/bacon_cooked.gif" width="35%"><img src="teaser/full.gif" width="30%">
+-->
 
 ## Model: Unbiased Teacher v2 (Anchor-free)
 
