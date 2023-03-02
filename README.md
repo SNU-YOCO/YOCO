@@ -2,9 +2,11 @@
 
 YOCO is a cooking AI based on the Unbiased teacher v2 network. It helps users cook easily by predicting doneness of the ingredients.
 
-<img src="https://user-images.githubusercontent.com/43427380/222368809-683b0c2e-0aca-4f7e-ac1e-eb8eef6e51d1.png" width="82%">
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/43427380/222368809-683b0c2e-0aca-4f7e-ac1e-eb8eef6e51d1.png" width="82%">
+</p>
 
-<table>
+<table align="center">
       <tr>
             <th></th>
             <th></th>
