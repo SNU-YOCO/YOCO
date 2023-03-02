@@ -1,14 +1,14 @@
 # YOCO : You Only Cook Once
 
-<img src="teaser/delicious.png" width="50%"> <img src="teaser/title.png" width="35%">
+YOCO is a cooking AI based on the Unbiased teacher v2 network. It helps users cook easily by predicting doneness of the ingredients.
+
+<img src="https://user-images.githubusercontent.com/43427380/222368809-683b0c2e-0aca-4f7e-ac1e-eb8eef6e51d1.png" width="82%">
 
 <img src="teaser/raw_crop.gif" width="30%"><img src="teaser/cooked_crop.gif" width="30%"><img src="teaser/overcooked.gif" width="20%">
 
-## Unbiased Teacher v2: Semi-supervised Object Detection for Anchor-free and Anchor-based Detectors
+## Model: Unbiased Teacher v2 (Anchor-free)
 
-<img src="teaser/pytorch-logo-dark.png" width="10%"> [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-This is the PyTorch implementation of our paper: <br>
+We are benchmarking the model from this paper: <br>
 **Unbiased Teacher v2: Semi-supervised Object Detection for Anchor-free and Anchor-based Detectors**<br>
 [Yen-Cheng Liu](https://ycliu93.github.io/), [Chih-Yao Ma](https://chihyaoma.github.io/), [Zsolt Kira](https://www.cc.gatech.edu/~zk15/)<br>
 The IEEE / CVF Computer Vision and Pattern Recognition Conference (CVPR), 2022 <br>
@@ -19,9 +19,19 @@ The IEEE / CVF Computer Vision and Pattern Recognition Conference (CVPR), 2022 <
 <img src="teaser/teaser_utv2.png" width="80%">
 </p>
 
-## Training
+You can check the original PyTorch implementation of the paper [here](https://github.com/facebookresearch/unbiased-teacher-v2).
 
-### FCOS
+## Train
+### Data
+We used our own dataset with 3 dishes: **bacon**, **egg**, and **pancake**. It has 9 classes including *bacon_raw, bacon_cooked, bacon_overcooked, egg_raw, egg_cooked, egg_overcooked, pancake_raw, pancake_cooked, and pancake_overcooked*.
+
+|bacon|egg|pancake|
+|:--:|:--:|:--:|
+|raw|raw|raw|
+|cooked|cooked|cooked|
+|overcooked|overcooked|overcooked|
+
+### Training FCOS
 
 - Train Unbiased Teacher v2 under 40% COCO-supervision (adjust SUP_PERCENT for different ratio )
 
@@ -34,7 +44,7 @@ python train_net_yoco.py\
        TEST.EVAL_PERIOD 500 DATALOADER.SUP_PERCENT 40.0
 ```
 
-## Resume the training
+### Resume the training
 
 ```shell
 python train_net_yoco.py \
@@ -65,3 +75,12 @@ python train_net.py \
 ## License
 
 This project is licensed under [MIT License](LICENSE), as found in the LICENSE file.
+
+<br>
+<br>
+<br>
+
+## Contributors
+
+[<img src="https://avatars.githubusercontent.com/u/67730355?s=120&v=4" width="72px">](https://github.com/jisoo1738)<br>Jisoo|[<img src="https://avatars.githubusercontent.com/u/53477630?s=120&v=4" width="72px">](https://github.com/jw00oo1)<br>Jiwoo|[<img src="https://avatars.githubusercontent.com/u/100509050?s=120&v=4" width="72px">](https://github.com/mingkyun)<br>Minkyun|[<img src="https://avatars.githubusercontent.com/u/43427380?s=120&v=4" width="72px">](https://github.com/kimsoyeong)<br>Soyeong|
+|:--:|:--:|:--:|:--:|
